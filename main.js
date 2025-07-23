@@ -22,19 +22,16 @@ formEl.addEventListener('submit', (e)=>{
     const kmElvalue = parseInt(kmEl.value);
     const ageElvalue = parseInt(ageEl.value);
 
-    console.log(kmElvalue,ageElvalue);
+    let price = 0;
+
+    if(ageElvalue < 18){
+        price = ((0.21 * kmElvalue)* 20)/100;
+    } else if (ageElvalue >= 65){
+        price = ((0.21 * kmElvalue)* 40)/100;
+    } else price = 0.21 * kmElvalue;
+
+    console.log(price);
 
 })
 
-/* formEl.addEventListener('submit', (e)=>{
-    e.preventDefault();
-    console.log(km);
-    console.log(age);
 
-}) */
-
-/* button.addEventListener('click', (event)=> {
-    event.preventDefault();
-    
-});
- */
