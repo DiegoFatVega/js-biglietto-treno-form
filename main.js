@@ -13,7 +13,7 @@ va applicato uno sconto del 40% per gli over 65. */
 
 const kmEl = document.getElementById('km-input');
 const ageEl = document.getElementById('eta-input');
-const buttonEl = document.getElementById('btn');
+const priceEl = document.getElementById('ticket-price');
 
 const formEl = document.querySelector('form');
 
@@ -30,6 +30,10 @@ formEl.addEventListener('submit', (e)=>{
         price = ((0.21 * kmElvalue)* 40)/100;
     } else price = 0.21 * kmElvalue;
 
+    priceEl.textContent= price.toFixed(2) + " €";
+
+
+    //document.getElementById('ticket-price').textContent = price.toFixed(2) + " €";
     console.log(price);
 
 })
