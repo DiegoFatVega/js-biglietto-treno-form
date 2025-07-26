@@ -18,22 +18,24 @@ const priceEl = document.getElementById('ticket-price');
 const formEl = document.querySelector('form');
 
 formEl.addEventListener('submit', (e)=>{
-    e.preventDefault();
+   e.preventDefault();
     const kmElvalue = parseInt(kmEl.value);
     const ageElvalue = parseInt(ageEl.value);
 
-    let price = 0;
+    let price = 0.21 * kmElvalue;
+    let discount;
+    let finalPrice;
+
 
     if(ageElvalue < 18){
-        price = ((0.21 * kmElvalue)* 20)/100;
+        discount = (price * 20)/100;
+        finalPrice = price - discount;
     } else if (ageElvalue >= 65){
-        price = ((0.21 * kmElvalue)* 40)/100;
-    } else price = 0.21 * kmElvalue;
+        discount = (price * 40)/100;
+        finalPrice = price - discount;
+    } else finalPrice = price;
 
-    priceEl.textContent= price.toFixed(2) + " €";
-
-
-    //document.getElementById('ticket-price').textContent = price.toFixed(2) + " €";
+    priceEl.textContent= finalPrice.toFixed(2) + " €";
     console.log(price);
 
 })
